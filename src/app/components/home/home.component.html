@@ -1,8 +1,8 @@
 <div class="header">
   <div class="tw-text-24-px tw-font-600">Open Books Library</div>
-  <front-end-internship-assignment-search-input
-    (search)="onSearch($event)"
-  ></front-end-internship-assignment-search-input>
+  <front-end-internship-assignment-search-input (search)="onSearch($event)">
+    ></front-end-internship-assignment-search-input
+  >
 </div>
 
 <div class="tw-flex tw-flex-row tw-m-24-px">
@@ -19,3 +19,8 @@
     </ul>
   </section>
 </div>
+
+<front-end-internship-assignment-book-item
+  *ngFor="let book of bookList"
+  [book]="book"
+></front-end-internship-assignment-book-item>

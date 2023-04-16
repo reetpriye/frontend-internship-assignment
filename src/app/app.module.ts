@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { BookItemComponent } from './components/book-item/book-item.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     TrendingSubjectsComponent,
     HomeComponent,
     SearchInputComponent,
+    BookItemComponent,
   ],
   imports: [
     BrowserModule,

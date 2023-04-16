@@ -10,7 +10,7 @@ export class FinderService {
 
   findBooks(search: string): Observable<any> {
     const params = new HttpParams().set('q', search);
-    return this.http.get('https://www.googleapis.com/books/v1/volumes', {
+    return this.http.get('https://openlibrary.org/search.json', {
       params,
     });
   }

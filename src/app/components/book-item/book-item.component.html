@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-title>{{ book?.volumeInfo?.title }}</mat-card-title>
+  <mat-card-content fxLayout fxLayoutGap="24px">
+    <!-- <div class="img-wrapper">
+      <img
+        [src]="book?.volumeInfo?.imageLinks?.thumbnail"
+        alt="Sorry! No photo!"
+        loading="lazy"
+      />
+    </div> -->
+    <div class="book-info" fxFlex="60%">
+      <p>
+        <strong>Author(s): </strong>
+        <span>{{ bookAuthors }}</span>
+      </p>
+      <p>
+        <strong>Title: </strong>
+        <span>
+          {{ bookTitle }}
+          <a
+            class="read-more-link"
+            [href]="book?.volumeInfo?.previewLink"
+            target="_blank"
+            rel="noopener"
+            >Read more</a
+          ></span
+        >
+      </p>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <!-- <mat-chip-list>
+      <mat-chip *ngFor="let category of book.volumeInfo.categories">{{
+        category
+      }}</mat-chip>
+    </mat-chip-list> -->
+  </mat-card-footer>
+</mat-card>

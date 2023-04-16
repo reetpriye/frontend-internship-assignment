@@ -27,9 +27,13 @@ export class HomeComponent implements OnDestroy {
     this.subscription = this.finderService
       .findBooks(input)
       .subscribe((books) => {
-        if (books.items.length) {
-          this.bookList = books.items;
+        console.log(books);
+        if (books.docs.length) {
+          console.log(this.loading);
+          this.bookList = books.docs;
+          console.log(this.bookList);
           this.loading = false;
+          console.log(this.loading);
         }
       });
   }
