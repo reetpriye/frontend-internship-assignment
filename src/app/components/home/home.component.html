@@ -24,38 +24,8 @@
           ></front-end-internship-assignment-search-input
         >
       </div>
-      <table class="table">
-        <thead class="table-primary">
-          <tr>
-            <th scope="col">Title and Sub Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Year of Publication</th>
-          </tr>
-        </thead>
-        <tbody>
-          <front-end-internship-assignment-book-item
-            *ngFor="
-              let book of bookList
-                | paginate
-                  : {
-                      itemsPerPage: tableSize,
-                      currentPage: page,
-                      totalItems: count
-                    };
-              let i = index
-            "
-            [book]="book"
-          ></front-end-internship-assignment-book-item>
-        </tbody>
-      </table>
-      <div>
-        <pagination-controls
-          previousLabel="Prev"
-          nextLabel="Next"
-          (pageChange)="onTableDataChange($event)"
-        >
-        </pagination-controls>
-      </div>
+      <front-end-internship-assignment-table-view [booksList]="bookList">
+      </front-end-internship-assignment-table-view>
     </div>
   </div>
 </div>

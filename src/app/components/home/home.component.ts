@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { FinderService } from 'src/app/finder.service';
 import { Subscription } from 'rxjs';
 
@@ -7,17 +7,10 @@ import { Subscription } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent {
   subscription: Subscription;
   bookList: any;
   loading = false;
-
-  title = 'pagination';
-  POSTS: any;
-  page: number = 1;
-  count: number = 0;
-  tableSize: number = 10;
-  tableSizes: any = [5, 10, 15, 20];
 
   constructor(private finderService: FinderService) {}
 
@@ -34,26 +27,23 @@ export class HomeComponent implements OnDestroy {
     this.subscription = this.finderService
       .findBooks(input)
       .subscribe((books) => {
-        console.log(books);
         if (books.docs.length) {
-          console.log(this.loading);
           this.bookList = books.docs;
           console.log(this.bookList);
           this.loading = false;
-          console.log(this.loading);
         }
       });
   }
 
-  onTableDataChange(event: any) {
-    this.page = event;
-    // this.postList();
-  }
-
-  onTableSizeChange(event: any) {
-    this.tableSize = event.target.value;
-    this.page = 1;
-    // this.postList();
+  ngOnInit() {
+    this.subscription = this.finderService
+      .findBooks('Harry')
+      .subscribe((books) => {
+        if (books.docs.length) {
+          this.bookList = books.docs;
+          this.loading = false;
+        }
+      });
   }
 
   ngOnDestroy() {

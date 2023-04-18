@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { TrendingSubjectsComponent } from '../app/components/trending-subjects/trending-subjects.component';
 import { HomeComponent } from '../app/components/home/home.component';
@@ -10,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchInputComponent } from './components/search-input/search-input.component';
-import { BookItemComponent } from './components/book-item/book-item.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +16,6 @@ import { BookItemComponent } from './components/book-item/book-item.component';
     TrendingSubjectsComponent,
     HomeComponent,
     SearchInputComponent,
-    BookItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +24,6 @@ import { BookItemComponent } from './components/book-item/book-item.component';
     HttpClientModule,
     SharedModule,
     ReactiveFormsModule,
-    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

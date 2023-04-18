@@ -26,6 +26,7 @@ export interface Availability {
 }
 
 export interface Book {
+  author_name: string[];
   key: string;
   title: string;
   edition_count: number;
