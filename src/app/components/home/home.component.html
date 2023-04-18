@@ -1,31 +1,30 @@
-<div class="container-fluid">
-  <div class="row height-100">
-    <div class="col-sm-2 my-auto sidebar height-100">
-      <section>
-        <div class="tw-font-600 tw-text-24-px text-white">
-          Trending Subjects
-        </div>
-        <ul class="tw-list-none tw-pl-0">
-          <li
-            class="tw-text-16-px tw-cursor-pointer tw-p-12-px text-light"
-            *ngFor="let subject of trendingSubjects"
-            routerLink="/trending-subject/{{ subject.name }}"
-          >
-            {{ subject.name }}
-          </li>
-        </ul>
-      </section>
-    </div>
-    <div class="col-sm-10">
-      <div class="d-flex justify-content-center">
-        <front-end-internship-assignment-search-input
-          (search)="onSearch($event)"
-        >
-          ></front-end-internship-assignment-search-input
-        >
+<div class="tw-grid tw-grid-cols-6">
+  <div class="sidebar">
+    <section>
+      <div class="tw-font-600 tw-text-24-px tw-text-white">
+        Trending Subjects
       </div>
-      <front-end-internship-assignment-table-view [booksList]="bookList">
-      </front-end-internship-assignment-table-view>
+      <ul class="tw-list-none tw-pl-0">
+        <li
+          class="tw-text-16-px tw-cursor-pointer tw-p-12-px tw-text-white"
+          *ngFor="let subject of trendingSubjects"
+          routerLink="/trending-subject/{{ subject.name }}"
+        >
+          {{ subject.name }}
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div class="col-start-2 tw-col-span-5">
+    <div>
+      <front-end-internship-assignment-search-input (search)="onSearch($event)">
+        ></front-end-internship-assignment-search-input
+      >
     </div>
+    <front-end-internship-assignment-table-view
+      [booksList]="bookList"
+      [loading]="loading"
+    >
+    </front-end-internship-assignment-table-view>
   </div>
 </div>

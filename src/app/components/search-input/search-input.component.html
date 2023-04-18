@@ -1,20 +1,37 @@
-<form
-  [formGroup]="form"
-  fxLayout
-  fxLayoutAlign="center center"
-  fxLayoutGap="10px"
-  (submit)="onSubmit()"
+<div
+  class="font-sans tw-text-black tw-bg-white tw-flex tw-items-center tw-justify-center"
 >
-  <mat-form-field appearance="outline">
-    <mat-label>Search</mat-label>
-    <input
-      formControlName="search"
-      matInput
-      name="search"
-      placeholder="Book name"
-      required
-      type="text"
-    />
-  </mat-form-field>
-  <button color="primary" mat-raised-button type="submit">Search</button>
-</form>
+  <form
+    [formGroup]="form"
+    fxLayout
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    (submit)="onSubmit()"
+  >
+    <div class="tw-border tw-rounded tw-overflow-hidden tw-flex">
+      <input
+        formControlName="search"
+        matInput
+        name="search"
+        required
+        type="text"
+        class="tw-px-4 tw-py-2"
+        placeholder="Search..."
+      />
+      <button
+        class="tw-flex tw-items-center tw-justify-center tw-px-4 tw-border-l"
+      >
+        <svg
+          class="tw-h-4 tw-w-4 tw-text-grey-dark"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"
+          />
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>

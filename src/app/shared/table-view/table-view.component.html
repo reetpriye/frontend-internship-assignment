@@ -1,10 +1,16 @@
-<div class="tw-m-24-px">
-  <div class="tw-mb-24-px tw-text-24-px">
+<div>
+  <div>
     Top {{ booksList.length }} book{{ booksList.length > 1 ? 's' : '' }} on
     {{ subjectName }}
   </div>
 
-  <ng-container>
+  <div *ngIf="loading; else dataLoaded">
+    <section class="tw-hero tw-container tw-flex tw-justify-center">
+      <img src="assets/loader.svg" />
+    </section>
+  </div>
+
+  <ng-template #dataLoaded>
     <table class="table-view">
       <thead>
         <tr class="table-row">
@@ -13,6 +19,7 @@
           <th class="header">First Publish Year</th>
         </tr>
       </thead>
+
       <tbody class="table-body">
         <tr
           *ngFor="
@@ -29,26 +36,33 @@
         >
           <td>
             <a
-              class="tw-no-underline"
+              class="tw-no-underline tw-font-semibold tw-text-blue-600 tw-dark:text-blue-500 tw-hover:underline"
               href="https://openlibrary.org{{ book.key }}"
               target="_blank"
               >{{ book.title }}</a
             >
           </td>
-          <td>
-            {{ book.author_name.length > 0 ? book.author_name[0] : 'Unknown' }}
+          <td class="tw-text-current">
+            {{
+              book.author_name &&
+                book.author_name.length > 0 &&
+                book.author_name[0]
+            }}
+            {{
+              book.authors && book.authors.length > 0 && book.authors[0].name
+            }}
           </td>
-          <td>{{ book.first_publish_year }}</td>
+          <td class="tw-text-current">{{ book.first_publish_year }}</td>
         </tr>
       </tbody>
     </table>
-  </ng-container>
-  <div>
-    <pagination-controls
-      previousLabel="Prev"
-      nextLabel="Next"
-      (pageChange)="onTableDataChange($event)"
-    >
-    </pagination-controls>
-  </div>
+    <div>
+      <pagination-controls
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)"
+      >
+      </pagination-controls>
+    </div>
+  </ng-template>
 </div>

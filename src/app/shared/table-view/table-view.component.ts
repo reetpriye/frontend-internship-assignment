@@ -9,6 +9,7 @@ import { Book } from 'src/app/core/models/book-response.model';
 export class TableViewComponent {
   @Input() booksList: Book[] = [];
   @Input() subjectName = '';
+  @Input() loading: boolean;
 
   title = 'pagination';
   POSTS: any;

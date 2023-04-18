@@ -29,13 +29,13 @@ export class HomeComponent {
       .subscribe((books) => {
         if (books.docs.length) {
           this.bookList = books.docs;
-          console.log(this.bookList);
           this.loading = false;
         }
       });
   }
 
   ngOnInit() {
+    this.loading = true;
     this.subscription = this.finderService
       .findBooks('Harry')
       .subscribe((books) => {
