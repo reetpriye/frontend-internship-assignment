@@ -12,6 +12,13 @@ export class HomeComponent implements OnDestroy {
   bookList: any;
   loading = false;
 
+  title = 'pagination';
+  POSTS: any;
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 10;
+  tableSizes: any = [5, 10, 15, 20];
+
   constructor(private finderService: FinderService) {}
 
   trendingSubjects: Array<any> = [
@@ -36,6 +43,17 @@ export class HomeComponent implements OnDestroy {
           console.log(this.loading);
         }
       });
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    // this.postList();
+  }
+
+  onTableSizeChange(event: any) {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    // this.postList();
   }
 
   ngOnDestroy() {

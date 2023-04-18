@@ -34,11 +34,28 @@
         </thead>
         <tbody>
           <front-end-internship-assignment-book-item
-            *ngFor="let book of bookList"
+            *ngFor="
+              let book of bookList
+                | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              let i = index
+            "
             [book]="book"
           ></front-end-internship-assignment-book-item>
         </tbody>
       </table>
+      <div>
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
     </div>
   </div>
 </div>

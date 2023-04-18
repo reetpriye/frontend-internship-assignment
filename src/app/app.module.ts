@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { TrendingSubjectsComponent } from '../app/components/trending-subjects/trending-subjects.component';
 import { HomeComponent } from '../app/components/home/home.component';
@@ -26,6 +27,7 @@ import { BookItemComponent } from './components/book-item/book-item.component';
     HttpClientModule,
     SharedModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
