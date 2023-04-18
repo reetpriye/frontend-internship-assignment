@@ -1,3 +1,13 @@
+.sidebar {
+  background: rgb(41, 36, 122);
+  background: linear-gradient(
+    90deg,
+    rgba(41, 36, 122, 1) 0%,
+    rgba(30, 30, 160, 1) 20%,
+    rgba(255, 0, 237, 1) 100%
+  );
+}
+
 .header {
   @apply tw-flex
   tw-flex-row
@@ -20,9 +30,13 @@
   tw-w-200-px;
 }
 
-.trending-subjects {
-  @apply tw-bg-table-header-bg
-  tw-p-12-px
-  tw-rounded-4-px
-  tw-shadow-lg;
+// .trending-subjects {
+//   @apply tw-bg-table-header-bg
+//   tw-p-12-px
+//   tw-rounded-4-px
+//   tw-shadow-lg;
+// }
+
+.height-100 {
+  min-height: 100vh;
 }

@@ -1,26 +1,44 @@
-<div class="header">
-  <div class="tw-text-24-px tw-font-600">Open Books Library</div>
-  <front-end-internship-assignment-search-input (search)="onSearch($event)">
-    ></front-end-internship-assignment-search-input
-  >
+<div class="container-fluid">
+  <div class="row height-100">
+    <div class="col-sm-2 my-auto sidebar height-100">
+      <section>
+        <div class="tw-font-600 tw-text-24-px text-white">
+          Trending Subjects
+        </div>
+        <ul class="tw-list-none tw-pl-0">
+          <li
+            class="tw-text-16-px tw-cursor-pointer tw-p-12-px text-light"
+            *ngFor="let subject of trendingSubjects"
+            routerLink="/trending-subject/{{ subject.name }}"
+          >
+            {{ subject.name }}
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="col-sm-10">
+      <div class="d-flex justify-content-center">
+        <front-end-internship-assignment-search-input
+          (search)="onSearch($event)"
+        >
+          ></front-end-internship-assignment-search-input
+        >
+      </div>
+      <table class="table">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">Title and Sub Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Year of Publication</th>
+          </tr>
+        </thead>
+        <tbody>
+          <front-end-internship-assignment-book-item
+            *ngFor="let book of bookList"
+            [book]="book"
+          ></front-end-internship-assignment-book-item>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-<div class="tw-flex tw-flex-row tw-m-24-px">
-  <section class="trending-subjects">
-    <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
-    <ul class="tw-list-none tw-pl-0">
-      <li
-        class="tw-text-16-px tw-cursor-pointer tw-p-12-px"
-        *ngFor="let subject of trendingSubjects"
-        routerLink="/trending-subject/{{ subject.name }}"
-      >
-        {{ subject.name }}
-      </li>
-    </ul>
-  </section>
-</div>
-
-<front-end-internship-assignment-book-item
-  *ngFor="let book of bookList"
-  [book]="book"
-></front-end-internship-assignment-book-item>

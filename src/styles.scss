@@ -5,13 +5,12 @@
 
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 *,
 html,
 body {
-  @apply
-  tw-font-activ-grotisk
+  @apply tw-font-activ-grotisk
   tw-text-14-px
   tw-box-border
   tw-antialiased;
@@ -19,11 +18,11 @@ body {
 
 html,
 body {
-  @apply tw-h-full tw-w-full
+  @apply tw-h-full tw-w-full;
 }
 
 body {
-  @apply tw-m-0 tw-p-0
+  @apply tw-m-0 tw-p-0;
 }
 
 table {

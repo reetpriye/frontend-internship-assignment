@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 
 @Component({
   selector: 'front-end-internship-assignment-book-item',
@@ -8,16 +14,17 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BookItemComponent implements OnInit {
   @Input()
   book: any;
+  @ViewChild('template', { static: true }) template;
 
   bookTitle: string;
   bookAuthors: string;
 
-  constructor() {}
+  constructor(private viewContainerRef: ViewContainerRef) {}
 
   ngOnInit(): void {
-    this.bookTitle = this.book.title
-      ? `${this.book.title.substring(0, 180)}...`
-      : '...';
+    this.viewContainerRef.createEmbeddedView(this.template);
+
+    this.bookTitle = this.book.title ? `${this.book.title}...` : '...';
     this.bookAuthors = this.book.author_name
       ? this.book.author_name.join(', ')
       : '...';
