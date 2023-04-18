@@ -29,9 +29,9 @@ export class TrendingSubjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.subjectName = params.get('name') || '';
-      this.isLoading = true;
       this.getAllBooks();
       this.isLoading = false;
     });

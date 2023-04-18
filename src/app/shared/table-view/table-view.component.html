@@ -1,62 +1,73 @@
-<div>
+<div class="tw-min-h-full tw-grid">
+  <!-- <div *ngIf="subjectName !== ''" ;> -->
   <div>
-    Top {{ booksList.length }} book{{ booksList.length > 1 ? 's' : '' }} on
-    {{ subjectName }}
+    <div class="tw-text-16-px tw-my-2 tw-mx-1">
+      Top {{ booksList.length }} book{{ booksList.length > 1 ? 's' : '' }} on
+      {{ subjectName === '' ? '...' : subjectName }}
+    </div>
+    <!-- </div> -->
+
+    <div *ngIf="loading; else dataLoaded">
+      <section class="tw-hero tw-container tw-flex tw-justify-center">
+        <img src="assets/loader.svg" />
+      </section>
+    </div>
+
+    <ng-template #dataLoaded>
+      <table class="table-view tw-shadow-md">
+        <thead>
+          <tr class="table-row tw-h-12 tw-bg-sky-300">
+            <th class="header">Title and Sub Title</th>
+            <th class="header">Author</th>
+            <th class="header">First Publish Year</th>
+          </tr>
+        </thead>
+
+        <tbody class="table-body">
+          <tr
+            *ngFor="
+              let book of booksList
+                | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              let i = index
+            "
+            class="row-data"
+          >
+            <td>
+              <a
+                class="tw-no-underline tw-text-blue-600 tw-dark:text-blue-400 tw-hover:underline tw-font-medium"
+                href="https://openlibrary.org{{ book.key }}"
+                target="_blank"
+                >{{ book.title }}</a
+              >
+            </td>
+            <td class="tw-text-gray-600 tw-font-medium">
+              {{
+                book.author_name &&
+                  book.author_name.length > 0 &&
+                  book.author_name[0]
+              }}
+              {{
+                book.authors && book.authors.length > 0 && book.authors[0].name
+              }}
+            </td>
+            <td class="tw-text-gray-600 tw-font-medium">
+              {{ book.first_publish_year }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
   </div>
-
-  <div *ngIf="loading; else dataLoaded">
-    <section class="tw-hero tw-container tw-flex tw-justify-center">
-      <img src="assets/loader.svg" />
-    </section>
-  </div>
-
-  <ng-template #dataLoaded>
-    <table class="table-view">
-      <thead>
-        <tr class="table-row">
-          <th class="header">Title and Sub Title</th>
-          <th class="header">Author</th>
-          <th class="header">First Publish Year</th>
-        </tr>
-      </thead>
-
-      <tbody class="table-body">
-        <tr
-          *ngFor="
-            let book of booksList
-              | paginate
-                : {
-                    itemsPerPage: tableSize,
-                    currentPage: page,
-                    totalItems: count
-                  };
-            let i = index
-          "
-          class="row-data"
-        >
-          <td>
-            <a
-              class="tw-no-underline tw-font-semibold tw-text-blue-600 tw-dark:text-blue-500 tw-hover:underline"
-              href="https://openlibrary.org{{ book.key }}"
-              target="_blank"
-              >{{ book.title }}</a
-            >
-          </td>
-          <td class="tw-text-current">
-            {{
-              book.author_name &&
-                book.author_name.length > 0 &&
-                book.author_name[0]
-            }}
-            {{
-              book.authors && book.authors.length > 0 && book.authors[0].name
-            }}
-          </td>
-          <td class="tw-text-current">{{ book.first_publish_year }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div>
+  <div class="tw-grid tw-grid-flow-col tw-align-middle">
+    <h6 class="tw-pl-4 tw-my-0 tw-h-10">
+      Showing {{ start }} to {{ end }} of {{ booksList.length }} entries
+    </h6>
+    <div class="tw-my-0 tw-h-10">
       <pagination-controls
         previousLabel="Prev"
         nextLabel="Next"
@@ -64,5 +75,5 @@
       >
       </pagination-controls>
     </div>
-  </ng-template>
+  </div>
 </div>

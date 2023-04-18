@@ -18,13 +18,19 @@ export class TableViewComponent {
   tableSize: number = 10;
   tableSizes: any = [5, 10, 15, 20];
 
+  start: number = 1;
+  end: number = 10;
+
+  ngOnInit() {}
+
   onTableDataChange(event: any) {
     this.page = event;
+    this.start = (event - 1) * 10 + 1;
+    this.end = Math.min(event * 10, this.booksList.length);
   }
 
   onTableSizeChange(event: any) {
     this.tableSize = event.target.value;
     this.page = 1;
-    // this.postList();
   }
 }

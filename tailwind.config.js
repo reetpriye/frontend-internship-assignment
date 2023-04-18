@@ -18,6 +18,7 @@ module.exports = {
   ],
   theme: {
     fontSize: {
+      '12-px': '12px',
       '14-px': '14px',
       '16-px': '16px',
       '24-px': '24px',

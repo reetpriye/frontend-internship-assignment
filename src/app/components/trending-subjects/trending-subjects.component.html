@@ -1,7 +1,37 @@
-<div *ngIf="allBooks.length > 0">
-  <front-end-internship-assignment-table-view
-    [booksList]="allBooks"
-    [subjectName]="subjectName"
-    [loading]="isLoading"
-  ></front-end-internship-assignment-table-view>
+<button
+  type="button"
+  class="tw-cursor-pointer tw-inline-flex tw-items-center tw-px-6 tw-py-2 tw-text-sm tw-text-center tw-rounded tw-text-cyan-500 tw-bg-cyan-100 tw-hover:bg-cyan-200"
+  routerLink="/"
+>
+  Home
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-6 h-6 ml-2 mt-0.5"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M17 8l4 4m0 0l-4 4m4-4H3"
+    />
+  </svg>
+</button>
+
+<div *ngIf="isLoading; else dataLoaded">
+  <section class="tw-hero tw-container tw-flex tw-justify-center">
+    <img src="assets/loader.svg" />
+  </section>
 </div>
+
+<ng-template #dataLoaded>
+  <div *ngIf="allBooks.length > 0">
+    <front-end-internship-assignment-table-view
+      [booksList]="allBooks"
+      [subjectName]="subjectName"
+      [loading]="isLoading"
+    ></front-end-internship-assignment-table-view>
+  </div>
+</ng-template>

@@ -2,6 +2,7 @@
   class="font-sans tw-text-black tw-bg-white tw-flex tw-items-center tw-justify-center"
 >
   <form
+    id="search-box"
     [formGroup]="form"
     fxLayout
     fxLayoutAlign="center center"
@@ -17,6 +18,7 @@
         type="text"
         class="tw-px-4 tw-py-2"
         placeholder="Search..."
+        [(ngModel)]="customSearch"
       />
       <button
         class="tw-flex tw-items-center tw-justify-center tw-px-4 tw-border-l"

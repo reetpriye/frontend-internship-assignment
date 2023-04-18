@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FinderService } from 'src/app/finder.service';
 import { Subscription } from 'rxjs';
+import { faMagnifyingGlass, faHouse } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'front-end-internship-assignment-home',
@@ -8,9 +9,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  faHouse = faHouse;
+  faMagnifyingGlass = faMagnifyingGlass;
   subscription: Subscription;
   bookList: any;
   loading = false;
+  searchText = '';
 
   constructor(private finderService: FinderService) {}
 
@@ -23,22 +27,12 @@ export class HomeComponent {
   ];
 
   onSearch(input: string): void {
+    this.searchText = input;
     this.loading = true;
     this.subscription = this.finderService
       .findBooks(input)
       .subscribe((books) => {
-        if (books.docs.length) {
-          this.bookList = books.docs;
-          this.loading = false;
-        }
-      });
-  }
-
-  ngOnInit() {
-    this.loading = true;
-    this.subscription = this.finderService
-      .findBooks('Harry')
-      .subscribe((books) => {
+        console.log(books.docs);
         if (books.docs.length) {
           this.bookList = books.docs;
           this.loading = false;
@@ -47,6 +41,6 @@ export class HomeComponent {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

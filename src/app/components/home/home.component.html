@@ -1,12 +1,24 @@
 <div class="tw-grid tw-grid-cols-6">
   <div class="sidebar">
-    <section>
-      <div class="tw-font-600 tw-text-24-px tw-text-white">
-        Trending Subjects
+    <section class="tw-pt-24 tw-pl-6">
+      <div
+        class="tw-text-12-px tw-cursor-pointer tw-p-12-px tw-text-white"
+        routerLink="/"
+      >
+        <fa-icon [icon]="faHouse"></fa-icon>
+        <a class="tw-pl-1">Home</a>
       </div>
+      <div
+        class="tw-text-12-px tw-cursor-pointer tw-p-12-px tw-text-white"
+        routerLink=":search-box"
+      >
+        <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+        <a class="tw-pl-1">Search</a>
+      </div>
+
       <ul class="tw-list-none tw-pl-0">
         <li
-          class="tw-text-16-px tw-cursor-pointer tw-p-12-px tw-text-white"
+          class="tw-text-12-px tw-cursor-pointer tw-p-12-px tw-text-white"
           *ngFor="let subject of trendingSubjects"
           routerLink="/trending-subject/{{ subject.name }}"
         >
@@ -16,7 +28,7 @@
     </section>
   </div>
   <div class="col-start-2 tw-col-span-5">
-    <div>
+    <div class="tw-shadow-lg tw-p-5 tw-my-auto">
       <front-end-internship-assignment-search-input (search)="onSearch($event)">
         ></front-end-internship-assignment-search-input
       >
@@ -24,6 +36,7 @@
     <front-end-internship-assignment-table-view
       [booksList]="bookList"
       [loading]="loading"
+      [subjectName]="searchText"
     >
     </front-end-internship-assignment-table-view>
   </div>
